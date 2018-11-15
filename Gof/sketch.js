@@ -30,9 +30,6 @@ function setup() {
   buttonStop = createButton('Stop');
   buttonStop.mousePressed(noLoop);
 
-    // buttonResume = createButton('Resume');
-    // buttonResume.mousePressed(loop);
-
   buttonReset = createButton('Reset');
     buttonReset.mousePressed(resetSketch);
 
@@ -63,71 +60,8 @@ function setup() {
   //   }
   // }
 }
-function resetSketch(){
 
-  loop();
-    generation = 0;
-    cols = width / resolution;
-    rows = height / resolution;
 
-    grid = make2DArray(cols, rows);
-
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            grid[i][j] = floor(random(2));
-        }
-    }
-    noLoop();
-}
-function stillLifeSketch(){
-  generation = 0;
-  loop();
-    cols = width / resolution;
-    rows = height / resolution;
-
-    grid = make2DArray(cols, rows);
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            grid[i][j] = 0;
-        }
-    }
-
-    grid[20][21] = 1;
-    grid[20][22] = 1;
-    grid[21][21] = 1;
-    grid[21][22] = 1;
-
-    noLoop();
-
-}
-
-function Oscillators(){
-
-  loop();
-    generation = 0;
-    cols = width / resolution;
-    rows = height / resolution;
-
-    grid = make2DArray(cols, rows);
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            grid[i][j] = 0;
-        }
-    }
-
-    grid[40][40] = 1;
-    grid[41][40] = 1;
-    grid[42][40] = 1;
-
-    grid[10][10] = 1;
-    grid[11][10] = 1;
-    grid[12][10] = 1;
-    grid[9][9] = 1;
-    grid[10][9] = 1;
-    grid[11][9] = 1;
-
-    noLoop();
-}
 
 //Draw function swtich Between old 2D to New 2D and rewite old 2D
 function draw() {
@@ -206,4 +140,71 @@ function countNeighbors(grid, x, y) {
   }
   sum -= grid[x][y];
   return sum;
+}
+
+function resetSketch(){
+
+    loop();
+    generation = 0;
+    cols = width / resolution;
+    rows = height / resolution;
+
+    grid = make2DArray(cols, rows);
+
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            grid[i][j] = floor(random(2));
+        }
+    }
+    noLoop();
+}
+//still life pattern
+function stillLifeSketch(){
+    generation = 0;
+    loop();
+    cols = width / resolution;
+    rows = height / resolution;
+
+    grid = make2DArray(cols, rows);
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    grid[20][21] = 1;
+    grid[20][22] = 1;
+    grid[21][21] = 1;
+    grid[21][22] = 1;
+
+    noLoop();
+
+}
+//oscillators patterns
+function Oscillators(){
+
+    loop();
+    generation = 0;
+    cols = width / resolution;
+    rows = height / resolution;
+
+    grid = make2DArray(cols, rows);
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    grid[40][40] = 1;
+    grid[41][40] = 1;
+    grid[42][40] = 1;
+
+    grid[10][10] = 1;
+    grid[11][10] = 1;
+    grid[12][10] = 1;
+    grid[9][9] = 1;
+    grid[10][9] = 1;
+    grid[11][9] = 1;
+
+    noLoop();
 }

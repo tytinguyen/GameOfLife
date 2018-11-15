@@ -42,7 +42,16 @@ function setup() {
   button23Generation = createButton('+23 Generations');
     button23Generation.mousePressed(iterateGen);
 
+    buttonStillLife = createButton('Still Life');
+    buttonStillLife.mousePressed(stillLifeSketch);
+
+    buttonOscillators = createButton('Oscillators');
+    buttonOscillators.mousePressed(Oscillators);
+
+
     resetSketch();
+    //stillLifeSketch();
+    //Oscillators();
 
   // cols = width / resolution;
   // rows = height / resolution;
@@ -55,6 +64,7 @@ function setup() {
   // }
 }
 function resetSketch(){
+
   loop();
     generation = 0;
     cols = width / resolution;
@@ -67,6 +77,55 @@ function resetSketch(){
             grid[i][j] = floor(random(2));
         }
     }
+    noLoop();
+}
+function stillLifeSketch(){
+  generation = 0;
+  loop();
+    cols = width / resolution;
+    rows = height / resolution;
+
+    grid = make2DArray(cols, rows);
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    grid[20][21] = 1;
+    grid[20][22] = 1;
+    grid[21][21] = 1;
+    grid[21][22] = 1;
+
+    noLoop();
+
+}
+
+function Oscillators(){
+
+  loop();
+    generation = 0;
+    cols = width / resolution;
+    rows = height / resolution;
+
+    grid = make2DArray(cols, rows);
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    grid[40][40] = 1;
+    grid[41][40] = 1;
+    grid[42][40] = 1;
+
+    grid[10][10] = 1;
+    grid[11][10] = 1;
+    grid[12][10] = 1;
+    grid[9][9] = 1;
+    grid[10][9] = 1;
+    grid[11][9] = 1;
+
     noLoop();
 }
 
